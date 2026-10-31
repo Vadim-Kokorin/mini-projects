@@ -51,7 +51,6 @@ function SaveExpenses(expenses) {
 const form = document.getElementById("form-text");
 const save_button = document.getElementById("save-button");
 save_button.addEventListener("click", (event) => {
-  event.preventDefault();
   save_button.textContent = "Сохранение...";
   save_button.disabled = true;
   SaveExpenses(expenses)
