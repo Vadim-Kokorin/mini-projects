@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Тест</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Трекер расходов</h1>
+    <div class="form-container">
+      <form id="form-text">
+        <input type="text" name="category" id="category" />
+        <input type="number" name="amount" id="amount" />
+        <input type="date" name="date" id="date" />
+        <button type="submit" class="add-product">Добавить</button>
+      </form>
+      <button class="save-expenses-list" id="save-button">Сохранить</button>
+    </div>
+    <div id="expenses-list"></div>
+    <span style="font-weight: bold; margin-top: 20px"
+      >Вывод сумм по категориям:</span
+    >
+    <div id="categories-list"></div>
+    <p id="total">Итоговое кол-во: 0</p>
+    <script src="expenses.js"></script>
+  </body>
+</html>

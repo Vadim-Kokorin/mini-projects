@@ -1,0 +1,75 @@
+* {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 16px;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+    gap: 30px;
+}
+
+form {
+    display: flex;
+    gap: 20px;
+}
+
+button {
+    font-size: 18px;
+    background-color: #002aff;
+    color: white;
+    border-radius: 40px;
+    padding: 7px 12px;
+    box-shadow: 2px 4px 6px black;
+    font-style: inherit;
+}
+
+button:hover {
+    background-color: #0088ff;
+}
+
+.delete-btn {
+    background-color: #e74c3c;
+}
+
+.delete-btn:hover {
+    background-color: rgb(250, 119, 132)
+}
+
+.save-expenses-list {
+    background-color: rgb(97, 244, 97);
+    color: rgb(65, 62, 62);
+}
+
+.save-expenses-list:hover {
+    background-color: rgb(187, 255, 199)
+}
+
+h1 {
+    font-size: 36px;
+}
+
+#expenses-list {
+    display: grid;
+    grid-template-columns: 3fr 1fr 0fr;
+    gap: 20px;
+}
+
+#total {
+    font-size: 26px;
+    font-weight: bold;
+}
+
+span {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+}
+
+.form-container {
+    display: flex;
+    gap: 15px;
+
+}
