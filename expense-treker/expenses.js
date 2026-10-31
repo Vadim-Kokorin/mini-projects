@@ -36,16 +36,23 @@ function getMostExpensiveCategory() {
   return mas_category_and_amount.sort((a, b) => b[1] - a[1])[0];
 }
 
-function SaveExpenses(expenses) {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      if (expenses.length !== 0) {
-        resolve("Расходы успешно сохранены!");
-      } else {
-        reject("ошибка!");
-      }
-    }, 1000);
-  });
+async function SaveExpenses(expenses) {
+  if (expenses.length == 0) {
+    throw new Error("нет расходов для сохранения");
+  } else {
+    const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(expenses),
+    });
+    if (!response.ok) {
+      throw new Error("Сервер не ответил");
+    } else {
+      return "Расходы успешно сохранены на сервере";
+    }
+  }
 }
 
 const form = document.getElementById("form-text");
