@@ -1,0 +1,57 @@
+
+* {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 16px;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    gap: 50px;
+}
+
+h1 {
+    font-size: 36px;
+}
+
+.input-form {
+    display: flex;
+    gap: 15px;
+}
+
+button {
+    background-color: rgb(96, 96, 255);
+    font-weight: bold;
+    color: aliceblue;
+    border-radius: 50px;
+    padding: 10px 15px;
+    border: none;
+}
+
+button:hover {
+    background-color: rgba(93, 139, 255, 0.636);
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 равных столбца */
+  gap: 10px;
+}
+
+.container button {
+    background-color: rgb(172, 249, 95);
+    color: rgba(51, 51, 51, 0.947);
+    padding: 12px 20px;
+}
+
+.container button:hover {
+    background-color: rgb(177, 252, 181);
+}
+
+.tasks-list {
+    border: 1px solid rgb(75, 75, 75);
+    min-height: 240px;
+    min-width: 500px;
+}
