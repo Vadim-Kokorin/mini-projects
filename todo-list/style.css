@@ -50,7 +50,7 @@ button:hover {
     background-color: rgb(177, 252, 181);
 }
 
-.tasks-list {
+#tasks-list {
     border: 1px solid rgb(75, 75, 75);
     min-height: 240px;
     min-width: 500px;

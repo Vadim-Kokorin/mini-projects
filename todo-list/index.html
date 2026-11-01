@@ -7,11 +7,9 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <script src="scripts.js"></script>
-
     <h1>Умный ToDo-лист</h1>
     <form class="input-form" id="form">
-      <input placeholder="текст задачи" type="text" />
+      <input placeholder="текст задачи" type="text" id="textTask" />
       <button type="submit" class="btn-add" id="btnAdd">Добавить</button>
     </form>
 
@@ -21,11 +19,12 @@
       <button>Выполненные</button>
     </div>
 
-    <div class="tasks-list"></div>
+    <div id="tasks-list"></div>
 
     <div class="container-result">
       <p>Всего задач:</p>
       <p>Выполнено:</p>
     </div>
+    <script src="scripts.js"></script>
   </body>
 </html>
