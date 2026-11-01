@@ -22,6 +22,10 @@ function addTask(id, text, completed) {
   renderTasks();
 }
 
+function deleteTask() {
+  massTasks.splice();
+}
+
 function saveExpensesToLocal() {
   localStorage.setItem("my-tasks", JSON.stringify(massTasks));
 }
@@ -31,9 +35,18 @@ function renderTasks() {
   containerTasks.innerHTML = "";
 
   massTasks.forEach((element) => {
-    let temp = `<span>id: "${element.id}", Задача: "${element.text}", Статус: "${element.completed == true ? "Выполнена" : "Выполняется"}"</span><br>`;
+    let temp = `<div id="task"><span>id: ${element.id}, Задача: ${element.text}, Статус: ${element.completed == true ? "Выполнена" : "Выполняется"}</span><button class="btnDelete">Удалить</button></div>`;
     containerTasks.innerHTML += temp;
   });
 }
 
 renderTasks();
+
+const all_buttons_delete = document.querySelectorAll(".btnDelete");
+all_buttons_delete.forEach((button) => {
+  button.addEventListener("click", () => {
+    const indexToRemove = button.dataset.index;
+    massTasks.splice(Number(indexToRemove), 1);
+    renderTasks();
+  });
+});

@@ -21,6 +21,10 @@ h1 {
     gap: 15px;
 }
 
+input {
+    border-radius: 20px;
+}
+
 button {
     background-color: rgb(96, 96, 255);
     font-weight: bold;
@@ -51,7 +55,35 @@ button:hover {
 }
 
 #tasks-list {
+    display: flex;
     border: 1px solid rgb(75, 75, 75);
     min-height: 240px;
     min-width: 500px;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+span {
+    border-bottom: 1px solid #ccc;
+    font-size: 20px;
+    margin: 5px;
+}
+
+.btnDelete {
+    background-color: rgb(250, 75, 75);
+    color:rgb(30, 30, 30);
+    border: 1px solid black;
+}
+
+.btnDelete:hover {
+    background-color: rgb(255, 165, 165);
+    color:rgb(30, 30, 30);
+}
+
+
+#task {
+    margin: 10px;
+    display: flex;
+    gap: 20px;
 }
