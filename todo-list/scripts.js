@@ -1,7 +1,9 @@
 let massTasks = JSON.parse(localStorage.getItem("my-tasks")) || [
   { id: 1, text: "Вакин посиди", completed: true },
   { id: 2, text: "седеш", completed: false },
-  { id: 3, text: "серега поспи", completed: true },
+  { id: 3, text: "артем поспи", completed: true },
+  { id: 4, text: "завтра сделать 30 отжиманий", completed: false },
+  { id: 5, text: "помыть посуду", completed: true },
 ];
 
 let form = document.getElementById("form");
