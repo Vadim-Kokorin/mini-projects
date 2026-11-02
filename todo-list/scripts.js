@@ -39,12 +39,14 @@ function renderTasks() {
   containerTasks.innerHTML = "";
 
   massTasks.forEach((element, index) => {
-    let temp = `<span>id: ${element.id}, Задача: ${element.text}, Статус: ${element.completed == true ? "Выполнена" : "Выполняется"}</span><button class="btnDelete" data-index="${index}">Удалить</button><br>`;
+    let temp = `<span>Задача: ${element.text}, Статус: ${element.completed ? "Выполнена" : "Выполняется"}</span>
+<input type="checkbox" class="task-check" data-index="${index}" ${element.completed ? "checked" : ""}>
+<button class="btnDelete" data-index="${index}">Удалить</button><br>`;
     containerTasks.innerHTML += temp;
   });
 
   const all_buttons_delete = document.querySelectorAll(".btnDelete");
-  console.log(all_buttons_delete);
+  const all_checkbox = document.querySelectorAll(".task-check");
 
   all_buttons_delete.forEach((button) => {
     button.addEventListener("click", () => {
@@ -54,6 +56,24 @@ function renderTasks() {
       renderTasks();
     });
   });
+
+  all_checkbox.forEach((chbox) => {
+    chbox.addEventListener("change", () => {
+      const indexToUpdate = chbox.dataset.index;
+      massTasks[indexToUpdate].completed = true;
+      saveTasksToLocal();
+      renderTasks();
+    });
+  });
+
+  allTasks();
+}
+
+function allTasks() {
+  const countTasks =
+    JSON.parse(localStorage.getItem("my-tasks")).length || massTasks.length;
+  const countTaskDiv = document.getElementById("counterTasks");
+  countTaskDiv.innerHTML = `Всего задач: ${countTasks}`;
 }
 
 renderTasks();

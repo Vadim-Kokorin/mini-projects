@@ -60,7 +60,7 @@ button:hover {
   display: grid;
   border: 1px solid rgb(75, 75, 75);
   min-width: 500px;
-  grid-template-columns: 3fr 1fr 0fr;
+  grid-template-columns: 4fr 0.5fr 1fr 0fr;
   gap: 12px;
   padding-top: 10px;
   padding-bottom: 10px;
