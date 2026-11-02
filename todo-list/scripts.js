@@ -42,7 +42,7 @@ function saveTasksToLocal() {
 
 function addTask(id, text, completed) {
   massTasks.push({ id, text, completed });
-  console.log(massTasks);
+  saveTasksToLocal();
   renderTasks(currentFilter);
 }
 
@@ -91,14 +91,18 @@ function renderTasks(filter) {
     });
   });
 
-  allTasks();
+  allTasksAndCompleteTasks();
 }
 
-function allTasks() {
+function allTasksAndCompleteTasks() {
   const countTasks =
     JSON.parse(localStorage.getItem("my-tasks")).length || massTasks.length;
   const countTaskDiv = document.getElementById("counterTasks");
   countTaskDiv.innerHTML = `Всего задач: ${countTasks}`;
+
+  const complete = massTasks.filter((task) => task.completed).length;
+  const completeTaskDiv = document.getElementById("completeTasks");
+  completeTaskDiv.innerHTML = `Выполнено: ${complete}`;
 }
 
 renderTasks(currentFilter);
