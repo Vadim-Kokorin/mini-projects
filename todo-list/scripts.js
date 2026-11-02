@@ -6,6 +6,8 @@ let massTasks = JSON.parse(localStorage.getItem("my-tasks")) || [
 
 let form = document.getElementById("form");
 
+let currentFilter = "all";
+
 form.addEventListener("submit", (event) => {
   event.preventDefault();
 
