@@ -82,3 +82,8 @@ span {
   background-color: rgb(255, 165, 165);
   color: rgb(30, 30, 30);
 }
+
+.container-result p {
+    font-size: 20px;
+    font-weight: 600;
+}
