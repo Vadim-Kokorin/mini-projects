@@ -1,4 +1,4 @@
-const massTasks = [
+let massTasks = JSON.parse(localStorage.getItem("my-tasks")) || [
   { id: 1, text: "Вакин посиди", completed: true },
   { id: 2, text: "седеш", completed: false },
   { id: 3, text: "серега поспи", completed: true },
@@ -15,6 +15,10 @@ form.addEventListener("submit", (event) => {
 
   addTask(maxId, textTask, false);
 });
+
+function saveTasksToLocal() {
+  localStorage.setItem("my-tasks", JSON.stringify(massTasks));
+}
 
 function addTask(id, text, completed) {
   massTasks.push({ id, text, completed });
@@ -34,19 +38,22 @@ function renderTasks() {
   let containerTasks = document.getElementById("tasks-list");
   containerTasks.innerHTML = "";
 
-  massTasks.forEach((element) => {
-    let temp = `<div id="task"><span>id: ${element.id}, Задача: ${element.text}, Статус: ${element.completed == true ? "Выполнена" : "Выполняется"}</span><button class="btnDelete">Удалить</button></div>`;
+  massTasks.forEach((element, index) => {
+    let temp = `<span>id: ${element.id}, Задача: ${element.text}, Статус: ${element.completed == true ? "Выполнена" : "Выполняется"}</span><button class="btnDelete" data-index="${index}">Удалить</button><br>`;
     containerTasks.innerHTML += temp;
+  });
+
+  const all_buttons_delete = document.querySelectorAll(".btnDelete");
+  console.log(all_buttons_delete);
+
+  all_buttons_delete.forEach((button) => {
+    button.addEventListener("click", () => {
+      const indexToRemove = button.dataset.index;
+      massTasks.splice(Number(indexToRemove), 1);
+      saveTasksToLocal();
+      renderTasks();
+    });
   });
 }
 
 renderTasks();
-
-const all_buttons_delete = document.querySelectorAll(".btnDelete");
-all_buttons_delete.forEach((button) => {
-  button.addEventListener("click", () => {
-    const indexToRemove = button.dataset.index;
-    massTasks.splice(Number(indexToRemove), 1);
-    renderTasks();
-  });
-});

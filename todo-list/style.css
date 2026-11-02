@@ -1,41 +1,43 @@
-
 * {
-    font-family: system-ui, -apple-system, sans-serif;
-    font-size: 16px;
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
+  font-size: 16px;
 }
 
 body {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    min-height: 100vh;
-    gap: 50px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  gap: 50px;
 }
 
 h1 {
-    font-size: 36px;
+  font-size: 36px;
 }
 
 .input-form {
-    display: flex;
-    gap: 15px;
+  display: flex;
+  gap: 15px;
 }
 
 input {
-    border-radius: 20px;
+  border-radius: 20px;
 }
 
 button {
-    background-color: rgb(96, 96, 255);
-    font-weight: bold;
-    color: aliceblue;
-    border-radius: 50px;
-    padding: 10px 15px;
-    border: none;
+  background-color: rgb(96, 96, 255);
+  font-weight: bold;
+  color: aliceblue;
+  border-radius: 50px;
+  padding: 10px 15px;
+  border: none;
 }
 
 button:hover {
-    background-color: rgba(93, 139, 255, 0.636);
+  background-color: rgba(93, 139, 255, 0.636);
 }
 
 .container {
@@ -45,45 +47,38 @@ button:hover {
 }
 
 .container button {
-    background-color: rgb(172, 249, 95);
-    color: rgba(51, 51, 51, 0.947);
-    padding: 12px 20px;
+  background-color: rgb(172, 249, 95);
+  color: rgba(51, 51, 51, 0.947);
+  padding: 12px 20px;
 }
 
 .container button:hover {
-    background-color: rgb(177, 252, 181);
+  background-color: rgb(177, 252, 181);
 }
 
 #tasks-list {
-    display: flex;
-    border: 1px solid rgb(75, 75, 75);
-    min-height: 240px;
-    min-width: 500px;
-    flex-direction: column;
-    align-items: center;
+  display: grid;
+  border: 1px solid rgb(75, 75, 75);
+  min-width: 500px;
+  grid-template-columns: 3fr 1fr 0fr;
+  gap: 12px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
-
 span {
-    border-bottom: 1px solid #ccc;
-    font-size: 20px;
-    margin: 5px;
+  border-bottom: 1px solid #ccc;
+  font-size: 20px;
+  margin: 5px;
 }
 
 .btnDelete {
-    background-color: rgb(250, 75, 75);
-    color:rgb(30, 30, 30);
-    border: 1px solid black;
+  background-color: rgb(250, 75, 75);
+  color: rgb(30, 30, 30);
+  border: 1px solid black;
 }
 
 .btnDelete:hover {
-    background-color: rgb(255, 165, 165);
-    color:rgb(30, 30, 30);
-}
-
-
-#task {
-    margin: 10px;
-    display: flex;
-    gap: 20px;
+  background-color: rgb(255, 165, 165);
+  color: rgb(30, 30, 30);
 }
