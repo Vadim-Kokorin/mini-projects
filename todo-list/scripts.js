@@ -8,6 +8,24 @@ let form = document.getElementById("form");
 
 let currentFilter = "all";
 
+const btnFilterAll = document.getElementById("btn-all");
+const btnFilterActive = document.getElementById("btn-active");
+const btnFilterComplete = document.getElementById("btn-complete");
+
+btnFilterAll.addEventListener("click", () => {
+  renderTasks((currentFilter = "all"));
+});
+
+btnFilterActive.addEventListener("click", () => {
+  currentFilter = "active";
+  renderTasks(currentFilter);
+});
+
+btnFilterComplete.addEventListener("click", () => {
+  currentFilter = "complete";
+  renderTasks(currentFilter);
+});
+
 form.addEventListener("submit", (event) => {
   event.preventDefault();
 
@@ -25,25 +43,29 @@ function saveTasksToLocal() {
 function addTask(id, text, completed) {
   massTasks.push({ id, text, completed });
   console.log(massTasks);
-  renderTasks();
-}
-
-function deleteTask() {
-  massTasks.splice();
+  renderTasks(currentFilter);
 }
 
 function saveExpensesToLocal() {
   localStorage.setItem("my-tasks", JSON.stringify(massTasks));
 }
 
-function renderTasks() {
+function renderTasks(filter) {
   let containerTasks = document.getElementById("tasks-list");
   containerTasks.innerHTML = "";
 
-  massTasks.forEach((element, index) => {
+  let tasksToShow = massTasks;
+
+  if (filter === "active") {
+    tasksToShow = massTasks.filter((task) => !task.completed);
+  } else if (filter === "complete") {
+    tasksToShow = massTasks.filter((task) => task.completed);
+  }
+
+  tasksToShow.forEach((element) => {
     let temp = `<span>Задача: ${element.text}, Статус: ${element.completed ? "Выполнена" : "Выполняется"}</span>
-<input type="checkbox" class="task-check" data-index="${index}" ${element.completed ? "checked" : ""}>
-<button class="btnDelete" data-index="${index}">Удалить</button><br>`;
+<input type="checkbox" class="task-check" data-id="${element.id}" ${element.completed ? "checked" : ""}>
+<button class="btnDelete" data-id="${element.id}">Удалить</button><br>`;
     containerTasks.innerHTML += temp;
   });
 
@@ -52,19 +74,20 @@ function renderTasks() {
 
   all_buttons_delete.forEach((button) => {
     button.addEventListener("click", () => {
-      const indexToRemove = button.dataset.index;
-      massTasks.splice(Number(indexToRemove), 1);
+      const idToRemove = button.dataset.id;
+      massTasks = massTasks.filter((task) => task.id != idToRemove);
       saveTasksToLocal();
-      renderTasks();
+      renderTasks(filter);
     });
   });
 
   all_checkbox.forEach((chbox) => {
     chbox.addEventListener("change", () => {
-      const indexToUpdate = chbox.dataset.index;
-      massTasks[indexToUpdate].completed = true;
+      const idToUpdate = chbox.dataset.id;
+      const task = massTasks.find((t) => t.id == idToUpdate);
+      task.completed = chbox.checked;
       saveTasksToLocal();
-      renderTasks();
+      renderTasks(filter);
     });
   });
 
@@ -78,4 +101,4 @@ function allTasks() {
   countTaskDiv.innerHTML = `Всего задач: ${countTasks}`;
 }
 
-renderTasks();
+renderTasks(currentFilter);
