@@ -15,7 +15,8 @@ const btnFilterActive = document.getElementById("btn-active");
 const btnFilterComplete = document.getElementById("btn-complete");
 
 btnFilterAll.addEventListener("click", () => {
-  renderTasks((currentFilter = "all"));
+  currentFilter = "all";
+  renderTasks(currentFilter);
 });
 
 btnFilterActive.addEventListener("click", () => {
@@ -43,13 +44,14 @@ function saveTasksToLocal() {
 }
 
 function addTask(id, text, completed) {
-  massTasks.push({ id, text, completed });
-  saveTasksToLocal();
+  if (text.trim() === "") {
+    alert("Введи текст задачи!!");
+    return;
+  } else {
+    massTasks.push({ id, text, completed });
+    saveTasksToLocal();
+  }
   renderTasks(currentFilter);
-}
-
-function saveExpensesToLocal() {
-  localStorage.setItem("my-tasks", JSON.stringify(massTasks));
 }
 
 function renderTasks(filter) {
@@ -86,7 +88,7 @@ function renderTasks(filter) {
   all_checkbox.forEach((chbox) => {
     chbox.addEventListener("change", () => {
       const idToUpdate = chbox.dataset.id;
-      const task = massTasks.find((t) => t.id == idToUpdate);
+      const task = massTasks.find((t) => t.id === idToUpdate);
       task.completed = chbox.checked;
       saveTasksToLocal();
       renderTasks(filter);
@@ -97,8 +99,7 @@ function renderTasks(filter) {
 }
 
 function allTasksAndCompleteTasks() {
-  const countTasks =
-    JSON.parse(localStorage.getItem("my-tasks")).length || massTasks.length;
+  const countTasks = massTasks.length;
   const countTaskDiv = document.getElementById("counterTasks");
   countTaskDiv.innerHTML = `Всего задач: ${countTasks}`;
 
